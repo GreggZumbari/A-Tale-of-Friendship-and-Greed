@@ -61,10 +61,8 @@ public class main implements MouseListener, ActionListener {
 	 */
 	public void triggerGMap() throws Exception {
 		File f = new File("maps" + File.separator + "testmap.atofag");
-		System.out.println(f);
-		if (f != null) {
+		if (f != null)
 			panel.loadFromFile(f);
-		}
 	}
 	
 	public void triggerGMap(GMap m) {
@@ -86,9 +84,7 @@ public class main implements MouseListener, ActionListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println("Clicked: " + e.getX() + ", " + e.getY());
-	}
+	public void mouseClicked(MouseEvent e) {}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {}
@@ -98,12 +94,14 @@ public class main implements MouseListener, ActionListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		//When the user clicks on a tile, say in console which tile was clicked.
+		System.out.println("Clicked tile: " +
+				Math.min(masterWidth - 1, (int)(e.getX() / panel.getTileWidth())) +
+				", " +
+				Math.min(masterHeight - 1, (int)(e.getY() / panel.getTileHeight())));
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		
-	}
+	public void mouseReleased(MouseEvent e) {}
 
 }

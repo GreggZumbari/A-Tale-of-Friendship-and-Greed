@@ -37,25 +37,4 @@ public class GMap {
 		return map[x][y];
 	}
 	
-	/*
-	//Return the tile type (stone, path, etc.)
-	public int getTileType(int x, int y) {
-		return map[x][y].getTileType();
-	}
-	
-	//Change the tile type (stone, path, etc.)
-	public void setTileType(int x, int y, int id) {
-		map[x][y].setTileType(id);
-	}
-	
-	//Add an aspect to the tile
-	public void addTileAspect(int x, int y, int aspect) {
-		map[x][y].addAspect(aspect);
-	}
-	
-	//Remove an aspect from the tile, if it has it, otherwise do nothing
-	public void removeTileAspect(int x, int y, int aspect) {
-		map[x][y].removeAspect(aspect);
-	}
-	*/
 }
