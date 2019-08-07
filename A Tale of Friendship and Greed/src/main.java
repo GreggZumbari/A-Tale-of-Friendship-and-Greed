@@ -45,7 +45,7 @@ public class main implements MouseListener, ActionListener {
 		window.setVisible(true);
 		
 		try {
-			loadMap("testMap");
+			panel.loadMap("testMap.atofag");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -54,19 +54,6 @@ public class main implements MouseListener, ActionListener {
 	
 	public static void main(String[] args) {
 		new main();
-	}
-	
-	/**
-	 * Load in a map. If no extension given, assume ".atofag"
-	 */
-	public void loadMap(String mapName) throws Exception {
-		File f = new File("maps" + File.separator + mapName + ".atofag");
-		if (f != null)
-			panel.loadFromFile(f);
-	}
-	
-	public void triggerGMap(GMap m) {
-		
 	}
 	
 	void triggerDialogue(DialoguePanel d) {

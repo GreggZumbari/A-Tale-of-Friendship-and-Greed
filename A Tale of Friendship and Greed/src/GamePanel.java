@@ -135,6 +135,23 @@ public class GamePanel extends JPanel {
 	}
 	
 	/**
+	 * Load in a map. If no extension given, assume ".atofag"
+	 */
+	public void loadMap(String mapName) throws Exception {
+		File f;
+		if (!mapName.substring(mapName.length() - 7, mapName.length()).equals(".atofag"))
+			f = new File("maps" + File.separator + mapName + ".atofag");
+		else
+			f = new File("maps" + File.separator + mapName);
+		if (f != null)
+			loadFromFile(f);
+	}
+	
+	public void triggerGMap(GMap m) {
+		
+	}
+	
+	/**
 	 * Paint Component
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
