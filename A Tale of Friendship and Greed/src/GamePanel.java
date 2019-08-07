@@ -17,17 +17,23 @@ public class GamePanel extends JPanel {
 	final int PATH = 3;
 	final int ROCK = 4;
 	
-	//int[][] grid stores info for each square on the board
+	//GMap "grid" stores info for each square on the board
 	int itemListSize = 4;
 	//int[][] grid;
 	GMap grid;
 	Color BROWN = new Color(110,66,0);
 	Color LIGHT_BROWN = new Color(175,150,125);
 	
+	//Unimportant variables, program will not break without these
+	boolean aioobe = false;
+	
 	public GamePanel(GMap grid) {
 		this.grid = grid;
 	}
 	
+	/**
+	 * Hardcode tile colors onto the starting board, for use in testing
+	 */
 	public void setMap() throws Exception {
 		
 	}
@@ -89,8 +95,15 @@ public class GamePanel extends JPanel {
 		int x = 0;
 		int y = 0;
 		for (int i = 0; i < output.length(); i++) {
-			if (Character.isDigit(output.charAt(i))) //Set the current tile to be that tile type
-				grid.getTile(x, y).setTileType((int)output.charAt(i) - 48);
+			try {
+				if (Character.isDigit(output.charAt(i))) //Set the current tile to be that tile type
+					grid.getTile(x, y).setTileType((int)output.charAt(i) - 48);
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				if (aioobe == false) {
+					System.out.println("The map file has bigger dimensions than the dimensions of the current GMap");
+					aioobe = true;
+				}
+			}
 			if (output.charAt(i) == ',') //Next block of the same row
 				y++;
 			if (output.charAt(i) == '.') { //Next row, back to the top
@@ -104,6 +117,7 @@ public class GamePanel extends JPanel {
 	/**
 	 * Outputs a string which is in the correct ".atofag" format
 	 * to be outputted into a file
+	 * Currently unused in current form of the game
 	 */
 	public String saveToFile() {
 		String output = "";
@@ -132,7 +146,7 @@ public class GamePanel extends JPanel {
 		
 		//Paint each sqaure
 		for (int x = 0; x < grid.width(); x++) {
-			for (int y = 0; y < grid.width(); y++) {
+			for (int y = 0; y < grid.height(); y++) {
 				if (grid.getTile(x, y).getTileType() == EMPTY) 
 					g.setColor(Color.WHITE);
 				if (grid.getTile(x, y).getTileType() == GRASS) 
