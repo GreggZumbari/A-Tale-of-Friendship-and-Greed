@@ -1,3 +1,4 @@
+package main;
 /**
  * This class contains the code for a GMap, which contains a grid of GTiles.
  * It is meant to keep track of all happenings from GTile to GTile.

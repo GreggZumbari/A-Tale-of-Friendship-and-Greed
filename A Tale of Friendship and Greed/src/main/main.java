@@ -1,3 +1,4 @@
+package main;
 /**
  * The main class for A Tale of Friendship and Greed, a top-down rpg about
  * a hero who will save the world from destruction or something like that.
@@ -19,7 +20,7 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 
-public class main implements MouseListener, ActionListener {
+public class main implements MouseListener, ActionListener, Runnable {
 	
 	final int EMPTY = 0;
 	int masterWidth = 20;
@@ -45,7 +46,7 @@ public class main implements MouseListener, ActionListener {
 		window.setVisible(true);
 		
 		try {
-			panel.loadMap("testMap.atofag");
+			panel.loadMap("testMap");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -90,5 +91,10 @@ public class main implements MouseListener, ActionListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {}
+
+	@Override
+	public void run() {
+		
+	}
 
 }

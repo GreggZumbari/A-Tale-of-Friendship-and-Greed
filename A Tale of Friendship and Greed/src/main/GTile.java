@@ -1,3 +1,4 @@
+package main;
 /**
  * This class contains code for a GTile. An individual 
  * tile which contains all information that is happening 
