@@ -48,23 +48,27 @@ public class GamePanel extends JPanel {
 	}
 	
 	/**
-	 * Return the player, assuming there is only one
+	 * Move all existing players in a specified direction by 1 square
+	 * 0 = up, 1 = down, 2 = right, 3 = left
 	 */
-	public ArrayList<Object> getEntity(String type) {
-		ArrayList<Object> out = new ArrayList<Object>();
-		for (int i = 0; i < entities.size(); i++) {
-			if (type.equals("GPlayer")) {
-				if (entities.get(i).getClass() == GPlayer.class) {
-					out.add(entities.get(i));
+	public void movePlayers(int direction) {
+		switch (direction) {
+			case 0:
+				for (int i = 0; i < entities.size(); i++) {
+					if (entities.get(i).getClass() == GPlayer.class) {
+						((GPlayer)entities.get(i)).setY(((GPlayer)entities.get(i)).getY() - 1);
+						if (((GPlayer)entities.get(i)).getY() < 0) {
+							((GPlayer)entities.get(i)).setY(0);
+						}
+					}
 				}
-			}
+				break;
 		}
-		return out;
 	}
 	
 	/**
 	 * Outputs the id of a specified tile
-	 */
+	 */        
 	public GTile getTile(int x, int y) {
 		return grid.getTile(x, y);
 	}

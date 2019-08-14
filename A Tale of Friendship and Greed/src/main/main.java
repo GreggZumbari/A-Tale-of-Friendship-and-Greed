@@ -110,9 +110,8 @@ class KeyListener extends KeyAdapter {
     
     public void keyReleased(KeyEvent e) {
     	if (e.getKeyChar() == 'w') {
-    		//Move players up
+    		System.out.println(super.toString());
     	}
-    		
     }
     
 }
