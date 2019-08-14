@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class GMap {
 	
-	int umbrella;
 	int width, height;
 	GTile[][] map;
 

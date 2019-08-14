@@ -12,6 +12,8 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -32,14 +34,18 @@ public class main implements MouseListener, ActionListener, Runnable {
 		
 		window.setTitle("A Tale of Friendship and Greed");
 		window.setSize(900,900);
+		window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 		window.setLayout(new BorderLayout());
 		center.setLayout(new GridLayout(1,1));
+		
+		panel.addKeyListener(new KeyListener());
+		panel.setFocusable(true);
 		
 		window.add(center, BorderLayout.CENTER);
 		center.addMouseListener(this);
 		center.add(panel);
 		
-		window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		window.setVisible(true);
 		
 		try {
@@ -94,4 +100,19 @@ public class main implements MouseListener, ActionListener, Runnable {
 		
 	}
 
+}
+
+class KeyListener extends KeyAdapter {
+	 
+    public void keyTyped(KeyEvent e) {}
+    
+    public void keyPressed(KeyEvent e) {}
+    
+    public void keyReleased(KeyEvent e) {
+    	if (e.getKeyChar() == 'w') {
+    		//Move players up
+    	}
+    		
+    }
+    
 }

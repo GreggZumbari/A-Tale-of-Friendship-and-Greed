@@ -4,7 +4,7 @@
  */
 package entities;
 
-public class Player {
+public class GPlayer {
 	
 	int x;
 	int y;
@@ -12,7 +12,7 @@ public class Player {
 	/**
 	 * Input with custom starting coordinates
 	 */
-	public Player(int x, int y) {
+	public GPlayer(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -20,7 +20,7 @@ public class Player {
 	/**
 	 * If no input, input with starting coordinates of 0,0
 	 */
-	public Player() {
+	public GPlayer() {
 		this.x = 0;
 		this.y = 0;
 	}

@@ -4,9 +4,12 @@ import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import entities.GPlayer;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel {
@@ -18,25 +21,45 @@ public class GamePanel extends JPanel {
 	final int PATH = 3;
 	final int ROCK = 4;
 	
+	//Entity ids
+	final int PLAYER = 0;
+	
 	//GMap "grid" stores info for each square on the board
 	int itemListSize = 4;
-	//int[][] grid;
-	GMap grid;
 	Color BROWN = new Color(110,66,0);
 	Color LIGHT_BROWN = new Color(175,150,125);
+	GMap grid;
+	ArrayList<Object> entities = new ArrayList<Object>();
 	
 	//Unimportant variables, program will not break without these
 	boolean aioobe = false;
 	
 	public GamePanel(GMap grid) {
 		this.grid = grid;
+		setMap();
+		repaint();
 	}
 	
 	/**
-	 * Hardcode tile colors onto the starting board, for use in testing
+	 * Hardcode tiles, aspects, or entities onto the starting board, for use in testing
 	 */
-	public void setMap() throws Exception {
-		
+	public void setMap() {
+		entities.add(new GPlayer(10, 10));
+	}
+	
+	/**
+	 * Return the player, assuming there is only one
+	 */
+	public ArrayList<Object> getEntity(String type) {
+		ArrayList<Object> out = new ArrayList<Object>();
+		for (int i = 0; i < entities.size(); i++) {
+			if (type.equals("GPlayer")) {
+				if (entities.get(i).getClass() == GPlayer.class) {
+					out.add(entities.get(i));
+				}
+			}
+		}
+		return out;
 	}
 	
 	/**
@@ -175,10 +198,21 @@ public class GamePanel extends JPanel {
 					g.setColor(LIGHT_BROWN);
 				if (grid.getTile(x, y).getTileType() == ROCK)
 					g.setColor(Color.GRAY);
-				g.fillRect((int)Math.round(x*width + 1),
-						   (int)Math.round(y*height + 1), 
+				g.fillRect((int)Math.round(x*width),
+						   (int)Math.round(y*height), 
 						   (int)Math.round(width), 
 						   (int)Math.round(height));
+			}
+		}
+		
+		//Paint each entity
+		for (int i = 0; i < entities.size(); i++) {
+			if (entities.get(i).getClass() == GPlayer.class) {
+				g.setColor(Color.YELLOW);
+				g.fillRect((int)Math.round(((GPlayer)entities.get(i)).getX() * width),
+						   (int)Math.round(((GPlayer)entities.get(i)).getY() * height), 
+					       (int)Math.round(width), 
+					       (int)Math.round(height));
 			}
 		}
 		
