@@ -57,13 +57,40 @@ public class GamePanel extends JPanel {
 				for (int i = 0; i < entities.size(); i++) {
 					if (entities.get(i).getClass() == GPlayer.class) {
 						((GPlayer)entities.get(i)).setY(((GPlayer)entities.get(i)).getY() - 1);
-						if (((GPlayer)entities.get(i)).getY() < 0) {
+						if (((GPlayer)entities.get(i)).getY() < 0)
 							((GPlayer)entities.get(i)).setY(0);
-						}
+					}
+				}
+				break;
+			case 1:
+				for (int i = 0; i < entities.size(); i++) {
+					if (entities.get(i).getClass() == GPlayer.class) {
+						((GPlayer)entities.get(i)).setY(((GPlayer)entities.get(i)).getY() + 1);
+						if (((GPlayer)entities.get(i)).getY() > grid.height - 1)
+							((GPlayer)entities.get(i)).setY(grid.height - 1);
+					}
+				}
+				break;
+			case 2:
+				for (int i = 0; i < entities.size(); i++) {
+					if (entities.get(i).getClass() == GPlayer.class) {
+						((GPlayer)entities.get(i)).setX(((GPlayer)entities.get(i)).getX() - 1);
+						if (((GPlayer)entities.get(i)).getX() < 0)
+							((GPlayer)entities.get(i)).setX(0);
+					}
+				}
+				break;
+			case 3:
+				for (int i = 0; i < entities.size(); i++) {
+					if (entities.get(i).getClass() == GPlayer.class) {
+						((GPlayer)entities.get(i)).setX(((GPlayer)entities.get(i)).getX() + 1);
+						if (((GPlayer)entities.get(i)).getX() > grid.width - 1)
+							((GPlayer)entities.get(i)).setX(grid.width - 1);
 					}
 				}
 				break;
 		}
+		repaint();
 	}
 	
 	/**

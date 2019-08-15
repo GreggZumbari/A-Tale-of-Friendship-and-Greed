@@ -21,7 +21,5 @@ public class GPlayer extends GEntity {
 		this.x = 0;
 		this.y = 0;
 	}
-	
-	//Add ability to move with W, S, A, D and controller support
 
 }
